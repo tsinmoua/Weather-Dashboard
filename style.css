@@ -1,0 +1,40 @@
+.jumbotron {
+    padding: 30px;
+    background-color: black;
+    color: white;
+}
+
+.display-4 {
+    font-weight: bolder;
+}
+
+.search {
+    float: left;
+    margin: 0;
+}
+
+.forecast {
+    width: 170px;
+    margin: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.forecastContainer {
+    float: left;
+}
+
+#inputCity {
+    width: 350px;
+}
+
+button {
+    border-radius: 10px;
+    background-color: lightblue;
+}
+
+body {
+    background-color: lightgray;
+}
