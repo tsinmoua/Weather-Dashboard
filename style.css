@@ -27,12 +27,8 @@
 }
 
 #inputCity {
-    width: 350px;
-}
-
-button {
-    border-radius: 10px;
-    background-color: lightblue;
+    width: 300px;
+    border-radius: 5px;
 }
 
 body {
