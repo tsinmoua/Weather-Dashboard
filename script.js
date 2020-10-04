@@ -10,9 +10,13 @@ function capitalizeFirstLetter(string) {
 
 var inputCityEl;
 
+JSON.parse(localStorage.getItem("city"));
+console.log(JSON.parse(localStorage.getItem("city")));
 
 $(".btn").on("click", function (event) {
     event.preventDefault();
+
+    $(".forecastContainer").css("visibility", "visible");
 
     inputCityEl = capitalizeFirstLetter($("input").val().trim());
 
@@ -21,7 +25,6 @@ $(".btn").on("click", function (event) {
 
     console.log(queryURL);
     console.log(inputCityEl);
-
 
     $.ajax({
         url: queryURL,
@@ -33,7 +36,8 @@ $(".btn").on("click", function (event) {
 
             // Current weather stats
             function currentWeather() {
-                $("#city").text((inputCityEl) + " (" + moment().format('L') + ") ICON HERE");
+                $("#city").text((inputCityEl) + " (" + moment().format('L') + ") ");
+                $("#city").append("<img src=http://openweathermap.org/img/w/" + response.weather[0].icon + ".png>")
                 var tempF = parseInt((response.main.temp - 273.15) * 1.80 + 32);
                 $("#currentTemp").text("Temperature: " + tempF + "\xB0F");
                 $("#currentHumidity").text("Humidity: " + response.main.humidity);
@@ -51,18 +55,43 @@ $(".btn").on("click", function (event) {
                 })
                     .then(function (response) {
                         console.log(response);
-                        $("#currentUVIndex").text("UV Index: " + response.value);
+                        $("#currentUVIndex").text(" " + response.value);
+                    });
+
+                //5 day forecast
+                $.ajax({
+                    url: ("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=current,minutely,hourly,alerts&appid=" + apiKey),
+                    method: "GET"
+                })
+                    .then(function (response) {
+                        console.log(response);
+                        for (let i = 1; i < 6; i++) {
+                            $("#date" + i).text(moment().add(i, 'd').format('L'));
+                            // $("#weather" + i).text(response.daily[i].weather[0].description);
+                            $("#weather" + i).append("<img src=http://openweathermap.org/img/w/" + response.daily[i].weather[0].icon + ".png>")
+                            var tempF = parseInt((response.daily[i].temp.day - 273.15) * 1.80 + 32);
+                            $("#temp" + i).text("Temp: " + tempF + "\xB0F");
+                            $("#humidity" + i).text("Humidity: " + response.daily[i].humidity);
+                        }
                     });
             }
 
             currentWeather();
+
+            
+            console.log(JSON.parse(localStorage.getItem("city")));
+            localStorage.setItem("city", JSON.stringify(inputCityEl));
+
 
             // History
             var history = $("<p>")
             history.addClass("historyClick")
             history.text(inputCityEl)
             $("#history").prepend(history);
+
+
+
         });
 
-        
+
 });

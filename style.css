@@ -24,6 +24,7 @@
 
 .forecastContainer {
     float: left;
+    visibility: hidden;
 }
 
 #inputCity {
@@ -33,4 +34,8 @@
 
 body {
     background-color: lightgray;
+}
+
+#currentUVIndex {
+    background-color: green;
 }
