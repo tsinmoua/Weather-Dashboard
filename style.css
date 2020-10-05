@@ -37,5 +37,33 @@ body {
 }
 
 #currentUVIndex {
+    color: white;
+    padding-right: 5px;
+    border-radius: 5px;
+}
+
+.favorable {
     background-color: green;
+}
+
+.moderate {
+    background-color: orange;
+}
+
+.severe {
+    background-color: red;
+}
+
+.list-group-item {
+    background-color: lightgray;
+}
+
+.list-group {
+    width: 345px;
+    padding-top: 30px;
+}
+
+.list-group li:hover {
+    background-color: rgb(43, 80, 201);
+    color: white;
 }

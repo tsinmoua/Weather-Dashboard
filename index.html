@@ -40,14 +40,17 @@
                         d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
                 </svg>
             </button>
-            <div id="history"></div>
+            <div id="history">
+                <ul class="list-group">
+                  </ul>
+            </div>
         </div>
     </div>
 
     <div class="container col-8 forecastContainer">
 
         <div class="card">
-            <div class="card-header" id="city">
+            <div class="card-header">
                 <h1 id="city">City (Date) (Icon for weather)</h1>
             </div>
             <div class="card-body">
@@ -55,8 +58,8 @@
                     <p id="currentTemp">Temp</p>
                     <p id="currentHumidity">Humidity</p>
                     <p id="currentWindSpeed">Wind Speed</p>
-                    <div>UV Index:<p id="currentUVIndex"></p>
-                    </div>
+                    <p>UV Index:&nbsp<span id="currentUVIndex"></span>
+                    </p>
                 </blockquote>
             </div>
         </div>
