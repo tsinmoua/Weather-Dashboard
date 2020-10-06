@@ -87,15 +87,15 @@ function history(inputCity) {
 $(".btn").on("click", function (event) {
     event.preventDefault();
     inputCityEl = capitalizeFirstLetter($("#inputCity").val().trim());
-    console.log(inputCityEl);
+    // console.log(inputCityEl);
     weather(inputCityEl);
     history(inputCityEl);
 
     $(".list-group-item").on("click", function (event) {
         event.preventDefault();
-        console.log("CLICKED");
+        // console.log("CLICKED");
         var historyClicked = $(this).attr("value");
-        console.log(historyClicked);
+        // console.log(historyClicked);
         weather(historyClicked);
     });
 });
