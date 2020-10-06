@@ -55,7 +55,7 @@ body {
 }
 
 .list-group-item {
-    background-color: lightgray;
+    background-color: white;
 }
 
 .list-group {
@@ -66,4 +66,9 @@ body {
 .list-group li:hover {
     background-color: rgb(43, 80, 201);
     color: white;
+}
+
+.card-header {
+    font-weight: bolder;
+    font-size: larger;
 }
