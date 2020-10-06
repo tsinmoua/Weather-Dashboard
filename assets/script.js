@@ -6,9 +6,9 @@ function capitalizeFirstLetter(string) {
 
 var inputCityEl;
 
-if (capitalizeFirstLetter(JSON.parse(localStorage.getItem("city"))) !== "") {
+if (localStorage.length !== 0) {
     console.log("previous city is not empty");
-    previousCity = capitalizeFirstLetter(JSON.parse(localStorage.getItem("city")));
+    previousCity = JSON.parse(localStorage.getItem("city"));
 
     console.log(previousCity);
     weather(previousCity);
