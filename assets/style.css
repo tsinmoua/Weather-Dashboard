@@ -6,6 +6,7 @@
 
 .display-4 {
     font-weight: bolder;
+    text-align: center;
 }
 
 .search {
@@ -14,7 +15,7 @@
 }
 
 .forecast {
-    width: 170px;
+    width: 20%;
     margin: 0;
 }
 

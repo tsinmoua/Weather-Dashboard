@@ -1,20 +1,21 @@
 var apiKey = "0ae7c8d78c752b325d6cfe515a691b24";
 
+// to capitalize input
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 var inputCityEl;
 
+// Check to see if local storage is empty. If not, return previous city searched.
 if (localStorage.length !== 0) {
-    console.log("previous city is not empty");
     previousCity = JSON.parse(localStorage.getItem("city"));
-
-    console.log(previousCity);
+    // console.log(previousCity);
     weather(previousCity);
     history(previousCity);
 }
 
+// Calling for the current weather, uv index, and forecast
 function weather(inputCity) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputCity + "&appid=" + apiKey;
     $.ajax({
@@ -60,19 +61,20 @@ function weather(inputCity) {
             // console.log(response);
             for (let i = 1; i < 6; i++) {
                 $("#date" + i).text(moment().add(i, 'd').format('L'));
-                // $("#weather" + i).text(response.daily[i].weather[0].description);
                 $("#weather" + i).html("<img src=http://openweathermap.org/img/w/" + response.daily[i].weather[0].icon + ".png alt='weather icon'/>")
                 var tempF = parseInt((response.daily[i].temp.day - 273.15) * 1.80 + 32);
                 $("#temp" + i).text("Temp: " + tempF + "\xB0F");
                 $("#humidity" + i).text("Humidity: " + response.daily[i].humidity + "%");
             };
         });
-    }).fail(function (response) {
+        // If 404 error for calls, return alert
+    }).fail(function () {
         alert(inputCity + " is not a valid city. Please try again.");
     });
 
 };
 
+// Make a list of the cities searched
 function history(inputCity) {
     var history = $("<li>")
     history.addClass("list-group-item")
@@ -81,13 +83,13 @@ function history(inputCity) {
     $(".list-group").prepend(history);
 }
 
+// Click event to search for the weather
 $(".btn").on("click", function (event) {
     event.preventDefault();
     inputCityEl = capitalizeFirstLetter($("#inputCity").val().trim());
     console.log(inputCityEl);
     weather(inputCityEl);
     history(inputCityEl);
-
 
     $(".list-group-item").on("click", function (event) {
         event.preventDefault();
