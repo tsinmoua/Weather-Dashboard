@@ -6,14 +6,14 @@ function capitalizeFirstLetter(string) {
 
 var inputCityEl;
 
-var previousCity;
-
-if (previousCity !== "") {
+if (capitalizeFirstLetter(JSON.parse(localStorage.getItem("city"))) !== "") {
+    console.log("previous city is not empty");
     previousCity = capitalizeFirstLetter(JSON.parse(localStorage.getItem("city")));
-    // weather(previousCity);
-}
 
-console.log(previousCity);
+    console.log(previousCity);
+    weather(previousCity);
+    history(previousCity);
+}
 
 function weather(inputCity) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputCity + "&appid=" + apiKey;
@@ -94,7 +94,6 @@ $(".btn").on("click", function (event) {
         console.log("CLICKED");
         var historyClicked = $(this).attr("value");
         console.log(historyClicked);
-
         weather(historyClicked);
     });
 });
