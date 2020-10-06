@@ -61,7 +61,7 @@ function weather(inputCity) {
             // console.log(response);
             for (let i = 1; i < 6; i++) {
                 $("#date" + i).text(moment().add(i, 'd').format('L'));
-                $("#weather" + i).html("<img src=http://openweathermap.org/img/w/" + response.daily[i].weather[0].icon + ".png alt='weather icon'/>")
+                $("#weather" + i).html("<img src=https://openweathermap.org/img/w/" + response.daily[i].weather[0].icon + ".png alt='weather icon'/>")
                 var tempF = parseInt((response.daily[i].temp.day - 273.15) * 1.80 + 32);
                 $("#temp" + i).text("Temp: " + tempF + "\xB0F");
                 $("#humidity" + i).text("Humidity: " + response.daily[i].humidity + "%");
