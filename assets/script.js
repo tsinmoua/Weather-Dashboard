@@ -25,7 +25,7 @@ function weather(inputCity) {
         $(".forecastContainer").css("visibility", "visible");
         localStorage.setItem("city", JSON.stringify(inputCity));
         $("#city").text((inputCity) + " (" + moment().format('L') + ") ");
-        $("#city").append("<img src=http://openweathermap.org/img/w/" + response.weather[0].icon + ".png>")
+        $("#city").append("<img src=https://openweathermap.org/img/w/" + response.weather[0].icon + ".png>")
         var tempF = parseInt((response.main.temp - 273.15) * 1.80 + 32);
         $("#currentTemp").text("Temperature: " + tempF + "\xB0F");
         $("#currentHumidity").text("Humidity: " + response.main.humidity + "%");
@@ -34,7 +34,7 @@ function weather(inputCity) {
         var lat = response.coord.lat;
 
         $.ajax({
-            url: ("http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey),
+            url: ("https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey),
             method: "GET"
         }).then(function (response) {
             $("#currentUVIndex").text("  " + response.value);
