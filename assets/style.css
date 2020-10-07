@@ -11,12 +11,13 @@
 
 .search {
     float: left;
-    margin: 0;
+    margin-left: 3%;
+    margin-right: 3%
 }
 
 .forecast {
-    width: 20%;
-    margin: 0;
+    width: 18%;
+    margin: 1%;
 }
 
 .row {
@@ -72,4 +73,8 @@ body {
 .card-header {
     font-weight: bolder;
     font-size: larger;
+}
+
+h1 {
+    font-weight: bold;
 }
